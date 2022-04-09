@@ -19,7 +19,7 @@ pipeline {
                 stage ('Push into ECR') {
                     steps {
                           sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 653783293550.dkr.ecr.us-east-1.amazonaws.com"
-                          sh "docker push 653783293550.dkr.ecr.us-east-1.amazonaws.com/helm-demo:latest:V$BUILD_NUMBER"
+                          sh "docker push 653783293550.dkr.ecr.us-east-1.amazonaws.com/helm-demo:latest"
                     }
                 }
         }
