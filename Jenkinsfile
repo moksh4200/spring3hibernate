@@ -1,7 +1,28 @@
-@Library('codeutils@master')
+pipeline {
+        agent any
 
-def codeUtils = new org.opstree.java.javaCodePipeline()
+        environment {
+                registry = "653783293550.dkr.ecr.us-east-1.amazonaws.com/helm-demo"
+        }
 
-node{
-  codeUtils.call()
+        stages {
+
+                stage ('Build Image') {
+                    steps {
+                        script {
+                           docker.build registry + ":V$BUILD_NUMBER"
+
+                        }
+                    }
+                }
+                
+                stage ('Push into ECR') {
+                    steps {
+                          sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 653783293550.dkr.ecr.us-east-1.amazonaws.com"
+                          sh "docker push 653783293550.dkr.ecr.us-east-1.amazonaws.com/helm-demo:latest:V$BUILD_NUMBER"
+                    }
+                }
+        }
+                    
 }
+
