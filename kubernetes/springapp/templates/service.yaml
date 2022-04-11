@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: {{ .Values.Namespacename }}
+  name: {{ .Values.Servicename }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: ClusterIP
+  selector:
+    {{- toYaml .Values.selector| nindent 4 }}

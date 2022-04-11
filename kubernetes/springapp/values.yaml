@@ -1,0 +1,24 @@
+Namespacename: spring
+
+Deploymentname: springdeployment
+
+Servicename: springservice
+
+Ingressname: springingress
+
+labels:
+  app.kubernetes.io/name: spring
+ 
+matchLabels:
+  app.kubernetes.io/name: spring
+  
+selector:
+  app.kubernetes.io/name: spring
+
+containers:
+  name: spring
+  image: 653783293550.dkr.ecr.us-east-1.amazonaws.com/helm-demo
+  imagePullPolicy: Always
+  
+#annotations:
+ # nginx.ingress.kubernetes.io/rewrite-target: /
