@@ -22,7 +22,16 @@ pipeline {
                           sh "docker push 653783293550.dkr.ecr.us-east-1.amazonaws.com/helm-demo:latest"
                     }
                 }
+        
+        }       stage ('deploy to EKS using helm') {
+                    steps{
+
+                       dir('kubernetes/') {
+                           sh "helm install spring springapp/"
+                       }
+                    }
         }
+
                     
 }
 
