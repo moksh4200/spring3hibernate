@@ -23,7 +23,8 @@ pipeline {
                     }
                 }
         
-        }       stage ('deploy to EKS using helm') {
+             
+                stage ('deploy to EKS using helm') {
                     steps{
 
                        dir('kubernetes/') {
@@ -35,3 +36,4 @@ pipeline {
                     
 }
 
+}
