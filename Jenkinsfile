@@ -30,7 +30,7 @@ pipeline {
                       kubernetesDeploy(
                         kubeconfigId: 'K8S',
                     )
-                       dir('kubernetes/') {
+                       dir('/var/lib/jenkins/workspace/helm-demo/kubernetes/') {
                            sh "helm install spring springapp/"
                        }
                     }
