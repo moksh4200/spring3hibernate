@@ -25,12 +25,11 @@ pipeline {
         
              
                 stage ('deploy to EKS using helm') {
-                    kubernetesDeploy(
-                        kubeconfigId: 'K8S',
-                    )
                     
                     steps{
-
+                      kubernetesDeploy(
+                        kubeconfigId: 'K8S',
+                    )
                        dir('kubernetes/') {
                            sh "helm install spring springapp/"
                        }
