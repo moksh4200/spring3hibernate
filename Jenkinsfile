@@ -23,7 +23,7 @@ pipeline {
                     }
                 }
         
-              
+                /* 
                 stage ('deploy to EKS using helm') {
                     
                     steps {
@@ -34,8 +34,16 @@ pipeline {
                          sh 'helm install  --set appimage=${registry}:V${BUILD_NUMBER} spring helm-local/'
                        }
                     }
+                */
+
+                stage('Kubernetes Deploy') {
+            steps {
+                container('helm') {
+                    sh "helm upgrade --install --force --set name=${NAME} --set image.tag=${VERSION} --set domain=${DOMAIN} ${NAME} ./helm"
+                }
+            }
         }
             
-                    
+        }              
 }
 
