@@ -33,6 +33,7 @@ pipeline {
                         script{
                             kubernetesDeploy (
                         kubeconfigId: 'K8S',
+                        configs: 'helm-local/*.yaml',
                     )
                         /* 
                             withCredentials([kubeconfigFile(credentialsId: 'K8S', variable: 'KUBECONFIG')]) {
