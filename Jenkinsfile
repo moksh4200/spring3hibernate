@@ -25,11 +25,11 @@ pipeline {
         
                 
                 stage ('deploy to EKS using helm') {
-                 
+                    /* 
                      kubernetesDeploy (
                         kubeconfigId: 'K8S',
                     )
-                    
+                    */
                     steps {
                      
                          sh 'helm install  --set appimage=${registry}:V${BUILD_NUMBER} spring helm-local/'
