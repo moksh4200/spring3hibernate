@@ -39,11 +39,11 @@ pipeline {
                 stage('Kubernetes Deploy') {
             steps {
                 container('helm') {
-                    sh "helm upgrade --install --force --set name=${NAME} --set image.tag=${VERSION} --set domain=${DOMAIN} ${NAME} ./helm"
+                    sh "helm upgrade --install --force --set appimage=${registry}:V${BUILD_NUMBER} spring helm-local/"
                 }
             }
         }
             
-        }              
+        }             
 }
 
