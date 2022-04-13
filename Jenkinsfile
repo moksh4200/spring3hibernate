@@ -28,6 +28,7 @@ pipeline {
                     
                     steps{
                       kubernetesDeploy(
+                        configs: 'helm-local/*.yaml'
                         kubeconfigId: 'K8S',
                     )
                          sh 'helm install  --set appimage=${registry}:V${BUILD_NUMBER} spring helm-local/'
