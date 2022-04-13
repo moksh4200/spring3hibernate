@@ -10,7 +10,7 @@ pipeline {
                 stage ('Build Image') {
                     steps {
                         script {
-                           docker.build registry 
+                           dockerImage = docker.build registry + ":V$BUILD_NUMBER" 
 
                         }
                     }
@@ -19,11 +19,11 @@ pipeline {
                 stage ('Push into ECR') {
                     steps {
                           sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 653783293550.dkr.ecr.us-east-1.amazonaws.com"
-                          sh "docker push 653783293550.dkr.ecr.us-east-1.amazonaws.com/helm-demo:latest"
+                          sh "docker push ${registry}:V${BUILD_NUMBER}"
                     }
                 }
         
-             
+             /* 
                 stage ('deploy to EKS using helm') {
                     
                     steps{
@@ -35,7 +35,7 @@ pipeline {
                        }
                     }
         }
-
+            */
                     
 }
 
