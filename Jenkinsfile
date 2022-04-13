@@ -26,8 +26,8 @@ pipeline {
               
                 stage ('deploy to EKS using helm') {
                     
-                    steps{
-                      kubernetesDeploy(
+                    steps {
+                      kubernetesDeploy (
                         configs: 'helm-local/*.yaml',
                         kubeconfigId: 'K8S',
                     )
