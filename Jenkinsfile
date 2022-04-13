@@ -29,14 +29,14 @@ pipeline {
                      
                     
                     steps {
-                        /*  
-                        script {
-                            withCredentials([kubeconfigFile(credentialsId: 'K8', variable: 'KUBECONFIG')]) {
-                    
                          
-                            withCredentials([kubeconfigFile(credentialsId: 'K8S', variable: 'KUBECONFIG')]) {
-                        
-                        */                     
+                        script {
+                            withCredentials([kubeconfigFile(credentialsId: 'K8s', variable: 'KUBECONFIG')]) {
+    
+                    }
+                         
+                        }                        
+                                           
                         sh 'helm install  --set appimage=${registry}:V${BUILD_NUMBER} spring helm-local/'
                     
                             }
