@@ -1,0 +1,24 @@
+Namespacename: crud
+
+Deploymentname: crud-deployment
+
+Servicename: crud-service
+
+Ingressname: crud-ingress
+
+labels:
+  app.kubernetes.io/name: crud
+ 
+matchLabels:
+  app.kubernetes.io/name: crud
+  
+selector:
+  app.kubernetes.io/name: crud
+
+containers:
+  name: crud
+  image: '271306209276.dkr.ecr.us-east-1.amazonaws.com/crud-qa:V$BUILD_NUMBER'
+  imagePullPolicy: Always
+  
+#annotations:
+ # nginx.ingress.kubernetes.io/rewrite-target: /

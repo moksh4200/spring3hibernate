@@ -23,20 +23,18 @@ pipeline {
                     }
                 }
         
-             /* 
+              
                 stage ('deploy to EKS using helm') {
                     
                     steps{
                       kubernetesDeploy(
                         kubeconfigId: 'K8S',
                     )
-                       dir('/var/lib/jenkins/workspace/helm-demo/kubernetes/') {
-                           sh "helm install spring springapp/"
+                         sh 'helm install spring helm-local --set appimage=${registry}:V${BUILD_NUMBER}'
                        }
                     }
         }
-            */
+            
                     
 }
 
-}
