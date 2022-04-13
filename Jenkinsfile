@@ -30,7 +30,7 @@ pipeline {
                       kubernetesDeploy(
                         kubeconfigId: 'K8S',
                     )
-                         sh 'helm install spring helm-local --set appimage=${registry}:V${BUILD_NUMBER}'
+                         sh 'helm install spring /helm-local --set appimage=${registry}:V${BUILD_NUMBER}'
                        }
                     }
         }
