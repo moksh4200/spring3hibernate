@@ -21,7 +21,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata: 
-  namespace: ingress-nginx
+  namespace: ingress-nginxx
   name: ingress-alb
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing

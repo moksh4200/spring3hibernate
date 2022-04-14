@@ -17,7 +17,7 @@ selector:
 
 containers:
   name: crud
-  image: '271306209276.dkr.ecr.us-east-1.amazonaws.com/crud-qa:V$BUILD_NUMBER'
+  image: '653783293550.dkr.ecr.us-east-1.amazonaws.com/helm-demo:V$BUILD_NUMBER'
   imagePullPolicy: Always
   
 #annotations:
