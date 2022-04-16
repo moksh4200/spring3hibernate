@@ -30,7 +30,7 @@ pipeline {
                     
                     steps {
                          
-                           sh 'helm install spring helm-local/'
+                           sh 'helm upgrade --install spring helm-local/'
                     
                             }
                 }
