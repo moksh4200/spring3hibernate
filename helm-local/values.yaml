@@ -1,11 +1,5 @@
 Namespacename: crud
 
-Deploymentname: crud-deployment
-
-Servicename: crud-service
-
-Ingressname: crud-ingress
-
 labels:
   app.kubernetes.io/name: crud
  
@@ -15,10 +9,30 @@ matchLabels:
 selector:
   app.kubernetes.io/name: crud
 
+
+Deployment:
+  ReplicaCount: 2
+  name : crud-deployment
+  Port:
+    Name: http
+    ContainerPort: 8080
 containers:
   name: crud
   image: '${registry}:V${BUILD_NUMBER}'
   imagePullPolicy: Always
+
+Service:
+  Name: http
+  Type: clusterIP
+  Port: 80
+  TargetPort: 8080
+
+Ingress:
   
-#annotations:
- # nginx.ingress.kubernetes.io/rewrite-target: /
+  Ingressname: crud-ingress
+  IngressClassname: nginx-external
+
+
+  
+annotations:
+  nginx.ingress.kubernetes.io/rewrite-target: /

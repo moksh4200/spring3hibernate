@@ -4,9 +4,9 @@ metadata:
   namespace: {{ .Values.Namespacename }}
   name: {{ .Values.Ingressname }}
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    {{- toYaml .Values.annotations | nindent 4 }}
 spec:
-  ingressClassName: nginx-external
+  ingressClassName: {{ .Values.IngressClassname }}
   rules:
     - http:
         paths:

@@ -9,10 +9,11 @@ metadata:
   namespace: {{ .Values.Namespacename }}
   name: {{ .Values.Deploymentname }}
 spec:
+  replicas: {{ .Values.Deployment.ReplicaCount}}
   selector:
     matchLabels:
       {{- toYaml .Values.matchLabels| nindent 6 }}
-  replicas: 2
+  
   template:
     metadata:
       labels:
@@ -23,4 +24,5 @@ spec:
         imagePullPolicy: {{ .Values.containers.imagePullPolicy }}
         name: {{ .Values.containers.name }}
         ports:
-        - containerPort: 8080
+        - name: {{ .Values.Deployment.Port.Name }}
+          containerPort: {{ .Values.Deployment.Port.ContainerPort }}

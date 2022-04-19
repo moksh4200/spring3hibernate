@@ -4,10 +4,13 @@ metadata:
   namespace: {{ .Values.Namespacename }}
   name: {{ .Values.Servicename }}
 spec:
-  type: ClusterIP
-  ports:
-    - port: 80
-      targetPort: 8080
-  type: ClusterIP
+  type: {{ .Values.Service.Type }}
   selector:
     {{- toYaml .Values.selector| nindent 4 }}
+  ports:
+  - protocol: TCP
+    name: {{ .Values.Service.Name }}
+    port: {{ .Values.Service.Port }}
+    targetPort: {{ .Values.Service.TargetPort }}
+
+  
