@@ -22,7 +22,7 @@ containers:
   imagePullPolicy: Always
 
 Service:
-  Name: http
+  ServiceName: crud-service
   Type: clusterIP
   Port: 80
   TargetPort: 8080
