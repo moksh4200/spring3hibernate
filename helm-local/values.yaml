@@ -1,38 +1,40 @@
-Namespacename: crud
-
-labels:
-  app.kubernetes.io/name: crud
- 
-matchLabels:
-  app.kubernetes.io/name: crud
-  
-selector:
-  app.kubernetes.io/name: crud
-
+Namespacename: qa
 
 Deployment:
   ReplicaCount: 2
   name : crud-deployment
+  Image:
+    Name: 271306209276.dkr.ecr.us-east-1.amazonaws.com/crud-qa
+    Tag: V1
+    PullPolicy: Always
   Port:
     Name: http
-    ContainerPort: 8080
-containers:
-  name: crud
-  image: '${registry}:V${BUILD_NUMBER}'
-  imagePullPolicy: Always
+    ContainerPort: 8083
+      
+  RollingUpdate:
+    MaxSurge: 25%
+    MaxUnavailable: 25%
+  Resources:
+    Limits:
+      Cpu: 400m
+      Memory: 400Mi
+    Requests:
+      Cpu: 400m
+      Memory: 400Mi
 
 Service:
-  ServiceName: crud-service
-  Type: clusterIP
+  Type: ClusterIP
   Port: 80
   TargetPort: 8080
 
+
 Ingress:
-  
-  Ingressname: crud-ingress
+  Ingressname: crud
   IngressClassname: nginx-external
-
-
+  path: /
+  pathType: Prefix
+  
   
 annotations:
-  nginx.ingress.kubernetes.io/rewrite-target: /
+  nginx.ingress.kubernetes.io/rewrite-target: /     
+        

@@ -2,39 +2,24 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   namespace: {{ .Values.Namespacename }}
-  name: {{ .Values.Ingressname }}
+  name: {{ .Values.Ingress.Ingressname }}
   annotations:
-    {{- toYaml .Values.annotations | nindent 4 }}
+    {{- toYaml .Values.annotations| nindent 4 }}
+    
 spec:
-  ingressClassName: {{ .Values.IngressClassname }}
+  ingressClassName: {{ .Values.Ingress.IngressClassname }}
   rules:
-    - http:
+    - host: {{ .Values.Ingress.host }}
+      http:
         paths:
-          - path: /
-            pathType: Prefix
+          - path: {{ .Values.Ingress.path }}
+            pathType: {{ .Values.Ingress.pathType }}
             backend:
               service: 
-                name: {{ .Values.Service.Servicename }}
+                name: {{ .Release.Name }}-service
                 port: 
-                  number: 80
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata: 
-  namespace: ingress-nginx
-  name: ingress-alb
-  annotations:
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
-spec:
-  ingressClassName: alb
-  rules:
-    - http:
-        paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: ingress-nginx-controller
-              port:
-                number: 80
+                  number: {{ .Values.Service.Port }}
+    
+  
+
+                
