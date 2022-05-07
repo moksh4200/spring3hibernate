@@ -4,12 +4,12 @@ Deployment:
   ReplicaCount: 2
   name : crud-deployment
   Image:
-    Name: 271306209276.dkr.ecr.us-east-1.amazonaws.com/crud-qa
+    Name: 666697415673.dkr.ecr.us-east-1.amazonaws.com/spring
     Tag: V1
     PullPolicy: Always
   Port:
     Name: http
-    ContainerPort: 8083
+    ContainerPort: 8080
       
   RollingUpdate:
     MaxSurge: 25%
