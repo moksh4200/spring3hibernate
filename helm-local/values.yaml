@@ -5,7 +5,7 @@ Deployment:
   name : crud-deployment
   Image:
     Name: 666697415673.dkr.ecr.us-east-1.amazonaws.com/spring
-    Tag: V1
+    Tag: V9
     PullPolicy: Always
   Port:
     Name: http
