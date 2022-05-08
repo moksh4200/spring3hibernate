@@ -1,8 +1,7 @@
 Namespacename: qa
 
 Deployment:
-  ReplicaCount: 2
-  name : crud-deployment
+  ReplicaCount: 1
   Image:
     Name: 666697415673.dkr.ecr.us-east-1.amazonaws.com/spring
     Tag: V9
@@ -16,11 +15,11 @@ Deployment:
     MaxUnavailable: 25%
   Resources:
     Limits:
-      Cpu: 400m
-      Memory: 400Mi
+      Cpu: 100m
+      Memory: 100Mi
     Requests:
-      Cpu: 400m
-      Memory: 400Mi
+      Cpu: 100m
+      Memory: 100Mi
 
 Service:
   Type: ClusterIP
