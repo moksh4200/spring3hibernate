@@ -30,7 +30,7 @@ pipeline {
                     
                     steps {
                          
-                           sh 'helm upgrade --install  spring helm-local/'
+                           sh 'helm upgrade --install --set image=${registry}:V${BUILD_NUMBER} spring helm-local/'
                     
                         }
                 }
