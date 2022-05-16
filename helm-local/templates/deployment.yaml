@@ -1,7 +1,7 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: {{ .Values.Namespacename }}
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: {{ .Values.Namespacename }}
 
 ---
 
@@ -99,6 +99,12 @@ spec:
           requests:
             cpu: {{ .Values.Deployment.Resources.Requests.Cpu }}
             memory: {{ .Values.Deployment.Resources.Requests.Memory }}
+        # volumeMounts: 
+        #   - name: persistent-storage
+        #     mountPath: /var/lib/storage
+      volumes: 
+        - name: persistent-storage
+          persistentVolumeClaim: 
+            claimName: ebs-pv-claim
 
 ---
-        

@@ -1,10 +1,12 @@
+
+  
 Namespacename: qa
 
 Deployment:
   ReplicaCount: 1
   Image:
     Name: 666697415673.dkr.ecr.us-east-1.amazonaws.com/spring
-    Tag: V9
+    Tag: V10
     PullPolicy: Always
   Port:
     Name: http
@@ -35,5 +37,4 @@ Ingress:
   
   
 annotations:
-  nginx.ingress.kubernetes.io/rewrite-target: /     
-        
+  nginx.ingress.kubernetes.io/rewrite-target: /

@@ -19,7 +19,3 @@ spec:
                 name: {{ .Release.Name }}-service
                 port: 
                   number: {{ .Values.Service.Port }}
-    
-  
-
-                
