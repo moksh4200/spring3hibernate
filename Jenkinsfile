@@ -4,23 +4,23 @@ pipeline {
         environment {
                 registry = "043394070357.dkr.ecr.ap-south-1.amazonaws.com/spring-repo"
         }
-
+        /* 
         tools {
                     maven "mvn3.3"
                     jdk "jdk8"
             }
-
+        */
 
 
         stages {
-
+        /* 
             stage('Maven Build') {
                             steps {
                                 sh 'mvn clean install'
                                 sh 'mvn package'
                         }
                     }
-                    /* 
+        */            
                 stage ('Build Image') {
                     steps {
                         script {
@@ -39,7 +39,7 @@ pipeline {
                 
 
                  
-        
+            /*
                 
                 stage ('deploy to EKS using helm') {
                     
