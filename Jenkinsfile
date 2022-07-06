@@ -2,7 +2,7 @@ pipeline {
         agent any
 
         environment {
-                registry = "666697415673.dkr.ecr.us-east-1.amazonaws.com/spring"
+                registry = "043394070357.dkr.ecr.ap-south-1.amazonaws.com/spring-repo"
         }
 
         stages {
@@ -18,7 +18,7 @@ pipeline {
                 
                 stage ('Push into ECR') {
                     steps {
-                          sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 666697415673.dkr.ecr.us-east-1.amazonaws.com"
+                          sh "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 043394070357.dkr.ecr.ap-south-1.amazonaws.com"
                           sh "docker push ${registry}:V${BUILD_NUMBER}"
                     }
                 }
