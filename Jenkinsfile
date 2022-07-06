@@ -22,6 +22,8 @@ pipeline {
                           sh "docker push ${registry}:V${BUILD_NUMBER}"
                     }
                 }
+
+                /* 
         
                 
                 stage ('deploy to EKS using helm') {
@@ -35,7 +37,9 @@ pipeline {
                         }
                 }
             
+            */
             }
+
 
         }
 
