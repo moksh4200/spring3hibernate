@@ -5,8 +5,21 @@ pipeline {
                 registry = "043394070357.dkr.ecr.ap-south-1.amazonaws.com/spring-repo"
         }
 
+        tools {
+                    maven "mvn3.3"
+                    jdk "jdk8"
+            }
+
+
+
         stages {
 
+            stage('Maven Build') {
+                            steps {
+                                sh 'mvn clean package'
+                        }
+                    }
+                    /* 
                 stage ('Build Image') {
                     steps {
                         script {
@@ -22,8 +35,9 @@ pipeline {
                           sh "docker push ${registry}:V${BUILD_NUMBER}"
                     }
                 }
+                
 
-                /* 
+                 
         
                 
                 stage ('deploy to EKS using helm') {
